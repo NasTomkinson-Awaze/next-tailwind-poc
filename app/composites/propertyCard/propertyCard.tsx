@@ -1,4 +1,3 @@
-import "./propertyCard.css";
 import { Badge } from "../../components/badge";
 import { Image } from "../../components/image";
 import { Review } from "../../components/review";
