@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
+
+@theme {
+  --color-primary: red;
+  --color-primary-light: pink;
+  --font-main: "Open Sans", sans-serif;
+}
+
+@layer base {
+  [data-theme="cottages.com"] {
+    --color-primary: #548235;
+    --color-primary-light: oklch(96.7% 0.001 286.375);
+    --radius-md: 0rem;
+    --font-main: "Open Sans", sans-serif;
+  }
+
+  [data-theme="novasol"] {
+    --color-primary: #c15741;
+    --color-primary-light: oklch(98% 0.016 73.684);
+    --radius-md: 1rem;
+    --font-main: "Noto Serif", serif;
+  }
+
+  [data-theme="hoseasons"] {
+    --color-primary: rgb(27, 133, 114);
+    --color-primary-light: oklch(98.2% 0.018 155.826);
+    --font-main: "Source Code Pro", monospace;
+  }
+}
+
+* {
+  @apply font-main;
+}
+
+/*  */
+@utility container {
+  @apply mx-auto;
+}
+
+/* Components layer can be used to style heavily used / duplicated DOM elements, and can be overwritten with inline tailwind utility classes */
+@layer components {
+  /* Bagde styles */
+  .badge {
+    @apply relative flex flex-row px-2 py-1 bg-transparent border border-current rounded-md text-xs;
+  }
+
+  /* Image styles */
+  .image {
+    @apply relative flex w-auto h-full object-cover;
+
+    img {
+      @apply w-full;
+    }
+  }
+
+  /* Property card styles, with tailwind in a CSS file */
+  .propertyCard {
+    .propertyCard-meta {
+      @apply flex flex-row gap-3;
+
+      li {
+        @apply flex items-center gap-1 text-sm text-gray-500;
+
+        svg {
+          @apply w-5 h-5 text-gray-500;
+        }
+      }
+    }
+  }
+
+  details {
+    [open] {
+      @apply bg-primary;
+    }
+
+    > *:not(summary) {
+      @apply mt-2;
+    }
+
+    summary {
+      @apply py-2 border-b border-neutral-200;
+    }
+  }
+}
